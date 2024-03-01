@@ -42,3 +42,6 @@ class BasePage:
             locator
         ))
 
+    def select_item_from_drop_down(self, locator_menu, locator_item):
+        self.driver.find_element(*locator_menu).click()
+        self.driver.find_element(*locator_item).click()

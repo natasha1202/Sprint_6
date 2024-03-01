@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 import data
@@ -19,14 +20,9 @@ class TestMainPage:
             (7, data.ANSWER_8)
         ]
     )
+    @allure.description('Тест проверяет текст ответов на вопросы')
     def test_question_answer_paar(self, main_page, number, expected_text):
+        main_page.accept_cookie()
+        actual_text = main_page.click_on_question_and_get_answer(number)
 
-        main_page.accept_cookie(MainPageLocators.ACCEPT_COOKIE_BUTTON)
-
-        question = main_page.calculate_locator(number, MainPageLocators.QUESTION_LOCATOR)
-        answer = main_page.calculate_locator(number, MainPageLocators.ANSWER_LOCATOR)
-
-        main_page.scroll_to_element(MainPageLocators.LAST_FAQ_ITEM)
-        main_page.click_on_element(question)
-        actual_text = main_page.get_text_from_element(answer)
         assert main_page.check_answer(actual_text, expected_text), f'Actual answer do not match the question'

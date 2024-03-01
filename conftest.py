@@ -17,7 +17,6 @@ from page_url import PageUrl
 def driver():
     driver = webdriver.Firefox()
     driver.maximize_window()
-    # driver.get(PageUrl.MAIN_PAGE_URL)
     yield driver
     driver.quit()
 
@@ -37,9 +36,11 @@ def order_page(driver):
 def header_page(driver):
     return HeaderPage(driver)
 
+
 @pytest.fixture(scope='function')
 def dzen_page(driver):
     return DzenPage(driver)
+
 
 @pytest.fixture(scope='function')
 def order_details():
@@ -57,27 +58,16 @@ def order_details():
     surname = f'{random_part_upper}{random_part_low}'
     phone = f'+7{random_phone}'
     address = f'Тестовая улица{random_street_number}'
-    station = random.choice(data.STATION)
-    station_index = random.randint(0, 225)
-    station_value = random.randint(4, 225)
 
     tomorrow = dt.date.today() + dt.timedelta(days=1)
     start_date = tomorrow.strftime("%d.%m.%Y")
-
-    rent_period = "сутки"
-
-    colors = [OrderPageLocators.CHECK_BOX_BLACK, OrderPageLocators.CHECK_BOX_GREY]
-    color = random.choice(colors)
 
     comment = random_part_low * 2
 
     return {"name": name,
             "surname": surname,
             "address": address,
-            "station": station_value,
             "phone": phone,
             "date": start_date,
-            "period": rent_period,
-            "color": color,
             "comment": comment
             }
