@@ -7,7 +7,8 @@ from page_object.page_locators.main_page_locators import MainPageLocators
 
 class TestHeaderPage:
 
-    @allure.description("Тест проверяет переход по логотипу Самокат")
+    @allure.title("Переход по логотипу Самокат")
+    @allure.description("Тест проверяет переход по логотипу Самокат на главную страницу Самокат")
     def test_click_on_scooter_logo(self, main_page, header_page):
         main_page.accept_cookie()
         header_page.click_on_logo()
@@ -18,7 +19,8 @@ class TestHeaderPage:
                         'а когда накатаетесь — заберём'
         assert main_page.check_text_on_page(text_on_main_page, expected_text)
 
-    @allure.description("Тест проверяет переход по логотипу Яндекс")
+    @allure.title("Переход по логотипу Яндекс")
+    @allure.description("Тест проверяет переход по логотипу Яндекс на главную страницу Яндекс Дзен")
     def test_redirect_to_dzen(self, main_page, header_page, dzen_page, driver):
         main_page.find_element_with_wait(MainPageLocators.MAIN_PAGE_HEADER_TEXT)
         header_page.switch_to_new_window(driver, HeaderPageLocators.YANDEX_LOGO_BUTTON)

@@ -20,7 +20,8 @@ class TestMainPage:
             (7, data.ANSWER_8)
         ]
     )
-    @allure.description('Тест проверяет текст ответов на вопросы')
+    @allure.title("FAQ проверка корректности пар вопрос-ответ")
+    @allure.description("Тест проверяет текст ответов на вопросы")
     def test_question_answer_paar(self, main_page, number, expected_text):
         main_page.accept_cookie()
         actual_text = main_page.click_on_question_and_get_answer(number)

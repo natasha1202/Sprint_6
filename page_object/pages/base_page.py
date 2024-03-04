@@ -1,3 +1,5 @@
+import random
+
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -45,3 +47,9 @@ class BasePage:
     def select_item_from_drop_down(self, locator_menu, locator_item):
         self.driver.find_element(*locator_menu).click()
         self.driver.find_element(*locator_item).click()
+
+    def select_element_from_drop_down(self, locator_menu,  locator_item):
+        self.driver.find_element(*locator_menu).click()
+        option_list = self.driver.find_elements(*locator_item)
+        random.choice(option_list).click()
+

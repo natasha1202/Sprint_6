@@ -2,7 +2,6 @@ import allure
 import pytest
 from page_object.page_locators.order_page_locators import OrderPageLocators
 from page_object.page_locators.main_page_locators import MainPageLocators
-from page_object.pages.order_page import OrderPage
 
 
 class TestOrderPage:
@@ -14,7 +13,13 @@ class TestOrderPage:
             MainPageLocators.ORDER_BUTTON_BOTTOM
         ]
     )
-    @allure.description("Тест проверяет заказ самоката. Позитивный сценарий")
+    @allure.title("Тест - заказ самоката. Позитивный сценарий")
+    @allure.description(
+        "Параметризованный тест.\n"
+        "Первый вариант заказ с помощью кнопки 'Заказать' вверху страницы\n"
+        "Второй вариант заказ с помощью кнопки 'Заказать' внизу страницы\n"
+        "Данные генерируются динамически"
+    )
     def test_create_order_success(self, main_page, order_page, order_details, order_button):
         main_page.accept_cookie()
         main_page.click_on_order_button(order_button)

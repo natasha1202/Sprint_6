@@ -59,8 +59,9 @@ def order_details():
     phone = f'+7{random_phone}'
     address = f'Тестовая улица{random_street_number}'
 
-    tomorrow = dt.date.today() + dt.timedelta(days=1)
-    start_date = tomorrow.strftime("%d.%m.%Y")
+    time_delta = random.randint(1, 10)
+    future_date = dt.date.today() + dt.timedelta(days=time_delta)
+    start_date = future_date.strftime("%d.%m.%Y")
 
     comment = random_part_low * 2
 

@@ -9,7 +9,8 @@ class OrderPageLocators:
     INPUT_PHONE = By.XPATH, ".//input[contains(@placeholder,'Телефон')]"
 
     DROP_DOWN_METRO = By.XPATH, ".//input[contains(@placeholder,'Станция')]"
-    FIRST_STATION = (By.XPATH, '//li[@class="select-search__row" and @data-index="1"]')
+    FIRST_STATION = By.XPATH, '//li[@class="select-search__row" and @data-index="1"]'
+    STATION_ITEM = By.XPATH, ".//div[contains(@class,'Order_Text')]"
 
     NEXT_BUTTON = By.XPATH, ".//button[contains(text(),'Далее')]"
 
@@ -18,6 +19,7 @@ class OrderPageLocators:
 
     DROP_DOWN_RENT_PERIOD = By.XPATH, ".//div[contains(text(),'Срок')]"
     RENT_OPTION = By.XPATH, "//div[@class='Dropdown-option' and text()='сутки']"
+    PERIOD_OPTION = By.CLASS_NAME, "Dropdown-option"
 
     CHECK_BOX_BLACK = By.ID, "black"
     CHECK_BOX_GREY = By.ID, "grey"
